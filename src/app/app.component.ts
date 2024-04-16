@@ -16,30 +16,25 @@ export class AppComponent {
     new WishItem('Master Angular'),
     new WishItem('Get Coffee', true),
   ];
-  visibleItems: Array<WishItem> = this.items;
   newWishText = '';
   filterOptionSelected: String = '0';
-
-  toggleIsComplete(item: WishItem) {
-    item.isCompleted = !item.isCompleted;
-  }
 
   addNewWish() {
     this.items.push(new WishItem(this.newWishText));
     this.clearInputBox();
   }
 
-  handleFilterChange(value: String) {
-    switch (value) {
+  get visibleItems(): Array<WishItem> {
+    let filterNumber = this.filterOptionSelected;
+    switch (filterNumber) {
       case '0':
-        this.visibleItems = this.items;
-        break;
+        return this.items;
       case '1':
-        this.visibleItems = this.items.filter((w) => !w.isCompleted);
-        break;
+        return this.items.filter((w) => !w.isCompleted);
       case '2':
-        this.visibleItems = this.items.filter((w) => w.isCompleted);
-        break;
+        return this.items.filter((w) => w.isCompleted);
+      default:
+        return new Array<WishItem>();
     }
   }
 
