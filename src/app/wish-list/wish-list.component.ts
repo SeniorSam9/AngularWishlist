@@ -7,6 +7,7 @@ import { WishItem } from '../../shared/models/WishItem';
   styleUrl: './wish-list.component.css',
 })
 export class WishListComponent {
+  // @Input is used for passing data from parent to child
   @Input() wishes: Array<WishItem> = [];
 
   toggleIsComplete(item: WishItem) {

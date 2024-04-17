@@ -16,13 +16,7 @@ export class AppComponent {
     new WishItem('Master Angular'),
     new WishItem('Get Coffee', true),
   ];
-  newWishText = '';
   filterOptionSelected: String = '0';
-
-  addNewWish() {
-    this.items.push(new WishItem(this.newWishText));
-    this.clearInputBox();
-  }
 
   get visibleItems(): Array<WishItem> {
     let filterNumber = this.filterOptionSelected;
@@ -36,9 +30,5 @@ export class AppComponent {
       default:
         return new Array<WishItem>();
     }
-  }
-
-  private clearInputBox() {
-    this.newWishText = '';
   }
 }
