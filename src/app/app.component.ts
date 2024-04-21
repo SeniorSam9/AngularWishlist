@@ -16,19 +16,11 @@ export class AppComponent {
     new WishItem('Master Angular'),
     new WishItem('Get Coffee', true),
   ];
-  filterOptionSelected: String = '0';
+
+  // this value is intended to be changed by the child
+  filter = () => {};
 
   get visibleItems(): Array<WishItem> {
-    let filterNumber = this.filterOptionSelected;
-    switch (filterNumber) {
-      case '0':
-        return this.items;
-      case '1':
-        return this.items.filter((w) => !w.isCompleted);
-      case '2':
-        return this.items.filter((w) => w.isCompleted);
-      default:
-        return new Array<WishItem>();
-    }
+    return this.items.filter(this.filter);
   }
 }

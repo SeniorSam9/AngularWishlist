@@ -15,23 +15,9 @@
 -->
 
 <div class="container">
+  <!--$event here means new WishItem(this.newWishText) coming from the child-->
   <add-wish (addWishEvent)="items.push($event)"></add-wish>
-  <div class="row mt-3">
-    <div class="col-sm-2">
-      <select
-        id="select"
-        class="form-select"
-        [(ngModel)]="filterOptionSelected"
-      >
-        <option value="0">All</option>
-        <option value="1">Unfulfilled</option>
-        <option value="2">Fulfilled</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <!-- this [] is received as @Input in wish-list component-->
-    <wish-list [wishes]="visibleItems"></wish-list>
-  </div>
+  <wish-filter (filterEvent)="filter = $event"></wish-filter>
+  <!--this [] is received as @Input in wish-list component-->
+  <wish-list [wishes]="visibleItems"></wish-list>
 </div>
